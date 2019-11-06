@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ab, AbTestVariant } from 'react-ab-testing';
+import { ab, AbTestVariant } from 'ab-react';
 
 ab.configure()
   .addExperiment('hello-world')

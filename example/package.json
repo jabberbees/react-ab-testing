@@ -1,6 +1,6 @@
 {
-  "name": "react-ab-testing-example",
-  "homepage": "https://jabberbees.github.io/react-ab-testing",
+  "name": "ab-react-example",
+  "homepage": "https://jabberbees.github.io/ab-react",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -14,7 +14,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-ab-testing": "file:.."
+    "@jabberbees/ab-react": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",

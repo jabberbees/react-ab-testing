@@ -1,21 +1,21 @@
-# react-ab-testing
+# ab-react
 
 > A simple React framework for A/B testing
 
-[![NPM](https://img.shields.io/npm/v/react-ab-testing.svg)](https://www.npmjs.com/package/react-ab-testing) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/ab-react.svg)](https://www.npmjs.com/package/ab-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 
 ## Install
 
 ```bash
-npm install --save react-ab-testing
+npm install --save ab-react
 ```
 
 ## Usage
 
 ```jsx
 import React, { Component } from 'react';
-import { ab, AbTestVariant } from 'react-ab-testing';
+import { ab, AbTestVariant } from 'ab-react';
 
 ab.configure()
   .addExperiment('hello-world')

@@ -1,10 +1,13 @@
 {
-  "name": "react-ab-testing",
+  "name": "@jabberbees/ab-react",
   "version": "1.0.0",
-  "description": "A simple React framework for A/B testing",
+  "description": "A simple React framework for a/b testing",
+  "keywords": [
+    "a/b", "ab", "testing", "react"
+  ],
   "author": "jabberbees",
   "license": "MIT",
-  "repository": "jabberbees/react-ab-testing",
+  "repository": "jabberbees/ab-react",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
