@@ -30,7 +30,7 @@ npm install --save @jabberbees/ab-react
 
 Configuration is done by:
 * importing ab singleton
-* adding experiments and variants between configure and done function calls
+* adding experiments and variants between **configure** and **done** function calls
 
 ```jsx
 import { ab } from '@jabberbees/ab-react';
@@ -54,17 +54,17 @@ Chosen variants are determined by ab's "variant map".
 The framework provides several functions to manipulate the variant map.
 All variant map functions can be chained in a Fluent way.
 
-clearVariantMap() clears the variant map.
+**clearVariantMap()** clears the variant map.
 
-setVariantMap(variantMap) sets the variant map from an object containing experiment names as keys and variant names as value.
+**setVariantMap(variantMap)** sets the variant map from an object containing experiment names as keys and variant names as value.
 
-loadVariantMap(key, storage) loads the variant map from at the given key in storage. storage defaults to window.localStorage. Forced variants have priority over loaded variants.
+**loadVariantMap(key, storage)** loads the variant map from at the given key in storage. storage defaults to window.localStorage. Forced variants have priority over loaded variants.
 
-saveVariantMap(key, storage) saves the variant map to the given key in storage.
+**saveVariantMap(key, storage)** saves the variant map to the given key in storage.
 
-removeSavedVariantMap(key, storage) removes the variant map stored at the given key in storage.
+**removeSavedVariantMap(key, storage)** removes the variant map stored at the given key in storage.
 
-randomiseVariants() chooses a variant randomly for each experiment which is not already initialised in the variant map.
+**randomiseVariants()** chooses a variant randomly for each experiment which is not already initialised in the variant map.
 
 
 ```jsx
