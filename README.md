@@ -23,7 +23,7 @@ Provide a simple A/B testing framework to React developers with the following pr
 ## Install
 
 ```bash
-npm install --save ab-react
+npm install --save @jabberbees/ab-react
 ```
 
 ## How to configure experiments and variants
