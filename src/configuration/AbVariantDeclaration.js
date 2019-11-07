@@ -2,7 +2,7 @@ export class AbVariantDeclaration {
     constructor(name) {
         this._name = name;
         this._weight = 1;
-        this._sticky = false;
+        this._forced = false;
     }
 
     name() {
@@ -17,11 +17,11 @@ export class AbVariantDeclaration {
         this._weight = weight;
     }
 
-    sticky() {
-        return this._sticky;
+    forced() {
+        return this._forced;
     }
 
-    makeSticky() {
-        this._sticky = true;
+    force() {
+        this._forced = true;
     }
 }

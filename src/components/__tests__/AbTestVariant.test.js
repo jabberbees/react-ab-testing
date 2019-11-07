@@ -20,60 +20,76 @@ afterEach(() => {
 describe("AbTestVariant component", () => {
 
 	test("shows inner HTML when experiment's variant is active", () => {
-		ab.configure().addExperiment('foo').addVariant('bar').done();
+		ab.configure()
+			.addExperiment('foo')
+			.addVariant('bar')
+			.done()
+			.randomiseVariants();
 		act(() => {
 			render(
 				<AbTestVariant experiment='foo' variant='bar'>
 					<div>Hello world!</div>
 				</AbTestVariant>
-			, container);
+				, container);
 		});
 		expect(container.innerHTML).toBe("<div>Hello world!</div>");
 	});
 
 	test("hides inner HTML when experiment's variant is inactive", () => {
-		ab.configure().addExperiment('foo').addVariant('bar').done();
+		ab.configure()
+			.addExperiment('foo')
+			.addVariant('bar')
+			.done()
+			.randomiseVariants();
 		act(() => {
 			render(
 				<AbTestVariant experiment='foo' variant='notbar'>
 					<div>Hello world!</div>
 				</AbTestVariant>
-			, container);
+				, container);
 		});
 		expect(container.innerHTML).toBe("");
 	});
-	
+
 	test("shows inner HTML when forced is true", () => {
 		act(() => {
 			render(
 				<AbTestVariant experiment='foo' variant='bar' forced={true}>
 					<div>Hello world!</div>
 				</AbTestVariant>
-			, container);
+				, container);
 		});
 		expect(container.innerHTML).toBe("<div>Hello world!</div>");
 	});
-	
+
 	test("hides inner HTML when visible is false", () => {
-		ab.configure().addExperiment('foo').addVariant('bar').done();
+		ab.configure()
+			.addExperiment('foo')
+			.addVariant('bar')
+			.done()
+			.randomiseVariants();
 		act(() => {
 			render(
 				<AbTestVariant experiment='foo' variant='bar' visible={false}>
 					<div>Hello world!</div>
 				</AbTestVariant>
-			, container);
+				, container);
 		});
 		expect(container.innerHTML).toBe("");
 	});
-	
+
 	test("hides inner HTML when visible is false even when forced", () => {
-		ab.configure().addExperiment('foo').addVariant('bar').done();
+		ab.configure()
+			.addExperiment('foo')
+			.addVariant('bar')
+			.done()
+			.randomiseVariants();
 		act(() => {
 			render(
 				<AbTestVariant experiment='foo' variant='bar' visible={false} forced={true}>
 					<div>Hello world!</div>
 				</AbTestVariant>
-			, container);
+				, container);
 		});
 		expect(container.innerHTML).toBe("");
 	});

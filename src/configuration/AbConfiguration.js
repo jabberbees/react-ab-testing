@@ -7,9 +7,11 @@ export class AbConfiguration {
     }
 
     done() {
-        console.assert(this._instance);
-        this._instance.__onConfigurationDone();
+        const instance = this._instance;
         this._instance = undefined;
+        console.assert(instance);
+        instance.__onConfigurationDone();
+        return instance;
     }
 
     addExperiment(name) {
@@ -36,9 +38,9 @@ export class AbConfiguration {
         return this;
     }
 
-    sticking() {
+    forced() {
         if (this._currentVariant) {
-            this._currentVariant.makeSticky();
+            this._currentVariant.force();
         }
         return this;
     }
