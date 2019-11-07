@@ -79,7 +79,7 @@ ab.loadVariantMap("ab-map", window.localStorage)
 
 React variants are implemented by:
 * importing AbTestVariant component
-* wrapping variants JSX code inside a <AbTestVariant> component
+* wrapping variants JSX code inside an `<AbTestVariant>` component
 
 ```jsx
 import React, { Component } from 'react';
