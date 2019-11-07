@@ -103,7 +103,7 @@ export default class App extends Component {
 
 ## Example
 
-From [example/src/App.js](blob/master/example/src/App.js)
+From [example/src/App.js](example/src/App.js)
 
 ```jsx
 // filename: App.js
