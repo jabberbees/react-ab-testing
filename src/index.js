@@ -1,4 +1,5 @@
-import { ab } from './ab';
-import { AbTestVariant } from './components/AbTestVariant';
+import { createAb } from './instance/createAb';
+import AbProvider from './components/AbProvider';
+import AbTestVariant from './components/AbTestVariant';
 
-export { ab, AbTestVariant };
+export { createAb, AbProvider, AbTestVariant };

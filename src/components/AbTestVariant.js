@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ab} from '../ab';
+import withAb from './withAb';
 
-export class AbTestVariant extends React.PureComponent {
+class AbTestVariant extends React.PureComponent {
     
     render() {
-        const {experiment, variant, visible, forced} = this.props;
+        const { ab, experiment, variant, visible, forced } = this.props;
+
         const activeVariant = ab.activeVariant(experiment);
         const variantMatches = (variant === activeVariant) || forced;
 
@@ -29,4 +30,6 @@ AbTestVariant.defaultProps = {
     variant: '',
     visible: true,
     forced: false
-}
+};
+
+export default withAb(AbTestVariant);

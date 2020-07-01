@@ -15,7 +15,8 @@ export class AbInstance {
     }
 
     activeVariant(experimentName) {
-        return this._variantMap[experimentName] || '';
+        const map = this.variantMap();
+        return map[experimentName] || '';
     }
 
     variantMap() {

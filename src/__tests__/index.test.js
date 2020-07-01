@@ -1,7 +1,11 @@
-import { ab, AbTestVariant } from '../index';
+import { createAb, AbProvider, AbTestVariant } from '../index';
 
-test('ab is defined', () => {
-	expect(ab).toBeDefined();
+test('createAb is defined', () => {
+	expect(createAb).toBeDefined();
+});
+
+test('AbProvider is defined', () => {
+	expect(AbProvider).toBeDefined();
 });
 
 test('AbTestVariant is defined', () => {

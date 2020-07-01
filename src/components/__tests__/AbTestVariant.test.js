@@ -1,20 +1,21 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import { AbTestVariant } from '../AbTestVariant';
-import { ab } from '../../index';
+import { createAb, AbProvider, AbTestVariant } from '../../index';
 
-let container;
+let container, ab;
 
 beforeEach(() => {
 	container = document.createElement("div");
 	document.body.appendChild(container);
+	ab = createAb();
 });
 
 afterEach(() => {
 	unmountComponentAtNode(container);
 	container.remove();
 	container = null;
+	ab = null;
 });
 
 describe("AbTestVariant component", () => {
@@ -27,9 +28,11 @@ describe("AbTestVariant component", () => {
 			.randomiseVariants();
 		act(() => {
 			render(
-				<AbTestVariant experiment='foo' variant='bar'>
-					<div>Hello world!</div>
-				</AbTestVariant>
+				<AbProvider ab={ab}>
+					<AbTestVariant experiment='foo' variant='bar'>
+						<div>Hello world!</div>
+					</AbTestVariant>
+				</AbProvider>
 				, container);
 		});
 		expect(container.innerHTML).toBe("<div>Hello world!</div>");
@@ -43,9 +46,11 @@ describe("AbTestVariant component", () => {
 			.randomiseVariants();
 		act(() => {
 			render(
-				<AbTestVariant experiment='foo' variant='notbar'>
-					<div>Hello world!</div>
-				</AbTestVariant>
+				<AbProvider ab={ab}>
+					<AbTestVariant experiment='foo' variant='notbar'>
+						<div>Hello world!</div>
+					</AbTestVariant>
+				</AbProvider>
 				, container);
 		});
 		expect(container.innerHTML).toBe("");
@@ -54,9 +59,11 @@ describe("AbTestVariant component", () => {
 	test("shows inner HTML when forced is true", () => {
 		act(() => {
 			render(
-				<AbTestVariant experiment='foo' variant='bar' forced={true}>
-					<div>Hello world!</div>
-				</AbTestVariant>
+				<AbProvider ab={ab}>
+					<AbTestVariant experiment='foo' variant='bar' forced={true}>
+						<div>Hello world!</div>
+					</AbTestVariant>
+				</AbProvider>
 				, container);
 		});
 		expect(container.innerHTML).toBe("<div>Hello world!</div>");
@@ -70,9 +77,11 @@ describe("AbTestVariant component", () => {
 			.randomiseVariants();
 		act(() => {
 			render(
-				<AbTestVariant experiment='foo' variant='bar' visible={false}>
-					<div>Hello world!</div>
-				</AbTestVariant>
+				<AbProvider ab={ab}>
+					<AbTestVariant experiment='foo' variant='bar' visible={false}>
+						<div>Hello world!</div>
+					</AbTestVariant>
+				</AbProvider>
 				, container);
 		});
 		expect(container.innerHTML).toBe("");
@@ -86,9 +95,11 @@ describe("AbTestVariant component", () => {
 			.randomiseVariants();
 		act(() => {
 			render(
-				<AbTestVariant experiment='foo' variant='bar' visible={false} forced={true}>
-					<div>Hello world!</div>
-				</AbTestVariant>
+				<AbProvider ab={ab}>
+					<AbTestVariant experiment='foo' variant='bar' visible={false} forced={true}>
+						<div>Hello world!</div>
+					</AbTestVariant>
+				</AbProvider>
 				, container);
 		});
 		expect(container.innerHTML).toBe("");

@@ -1,9 +1,12 @@
 {
   "name": "@jabberbees/ab-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple React framework for a/b testing",
   "keywords": [
-    "a/b", "ab", "testing", "react"
+    "a/b",
+    "ab",
+    "testing",
+    "react"
   ],
   "author": "jabberbees",
   "license": "MIT",

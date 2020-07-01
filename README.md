@@ -29,11 +29,14 @@ npm install --save @jabberbees/ab-react
 ## How to configure experiments and variants
 
 Configuration is done by:
-* importing ab singleton
+* creating an A/B configuration (singleton)
 * adding experiments and variants between **configure** and **done** function calls
+* providing this A/B configuration near the top of the application component tree to all child components
 
 ```jsx
-import { ab } from '@jabberbees/ab-react';
+import { createAb, AbProvider } from '@jabberbees/ab-react';
+
+const ab = createAb();
 
 ab.configure()
   .addExperiment('hello-world')
@@ -45,6 +48,16 @@ ab.configure()
   .addVariant("zig")
   .addVariant("zag").forced()
   .done()
+
+export default class App extends Component {
+  render() {
+    return (
+      <AbProvider ab={ab}>
+        ...
+      </AbProvider>
+    );
+  }
+}
 ```
 
 ## How to initialise chosen variants
@@ -68,7 +81,9 @@ All variant map functions can be chained in a Fluent way.
 
 
 ```jsx
-import { ab } from '@jabberbees/ab-react';
+import { createAb } from '@jabberbees/ab-react';
+
+const ab = createAb();
 
 ab.loadVariantMap("ab-map", window.localStorage)
   .randomiseVariants()
@@ -83,19 +98,25 @@ React variants are implemented by:
 
 ```jsx
 import React, { Component } from 'react';
-import { AbTestVariant } from '@jabberbees/ab-react';
+import { createAb, AbProvider, AbTestVariant } from '@jabberbees/ab-react';
+
+const ab = createAb();
+
+ab.configure()...
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <AbTestVariant experiment='zig-or-zag' variant='zig'>
-          <p>Zig</p>
-        </AbTestVariant>
-        <AbTestVariant experiment='zig-or-zag' variant='zag'>
-          <p>Definitely Zag</p>
-        </AbTestVariant>
-      </div>
+      <AbProvider ab={ab}>
+        <div>
+          <AbTestVariant experiment='zig-or-zag' variant='zig'>
+            <p>Zig</p>
+          </AbTestVariant>
+          <AbTestVariant experiment='zig-or-zag' variant='zag'>
+            <p>Definitely Zag</p>
+          </AbTestVariant>
+        </div>
+      </AbProvider>
     );
   }
 }
@@ -109,7 +130,9 @@ From [example/src/App.js](example/src/App.js)
 // filename: App.js
 
 import React, { Component } from 'react';
-import { ab, AbTestVariant } from '@jabberbees/ab-react';
+import { createAb, AbProvider, AbTestVariant } from '@jabberbees/ab-react';
+
+const ab = createAb();
 
 ab.configure()
   .addExperiment('hello-world')
@@ -133,29 +156,31 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <AbTestVariant experiment='hello-world' variant='v1'>
-          <p>Hello world! (v1)</p>
-        </AbTestVariant>
-        <AbTestVariant experiment='hello-world' variant='v2'>
-          <p>Hello world! (v2)</p>
-        </AbTestVariant>
-        <AbTestVariant experiment='hello-world' variant='v3'>
-          <p>Hello world! (v3)</p>
-        </AbTestVariant>
-        <AbTestVariant experiment='hello-world' variant='v4'>
-          <p>Hello world! (v4)</p>
-        </AbTestVariant>
+      <AbProvider ab={ab}>
+        <div>
+          <AbTestVariant experiment='hello-world' variant='v1'>
+            <p>Hello world! (v1)</p>
+          </AbTestVariant>
+          <AbTestVariant experiment='hello-world' variant='v2'>
+            <p>Hello world! (v2)</p>
+          </AbTestVariant>
+          <AbTestVariant experiment='hello-world' variant='v3'>
+            <p>Hello world! (v3)</p>
+          </AbTestVariant>
+          <AbTestVariant experiment='hello-world' variant='v4'>
+            <p>Hello world! (v4)</p>
+          </AbTestVariant>
 
-        <AbTestVariant experiment='zig-or-zag' variant='zig'>
-          <p>Zig</p>
-        </AbTestVariant>
-        <AbTestVariant experiment='zig-or-zag' variant='zag'>
-          <p>Definitely Zag</p>
-        </AbTestVariant>
+          <AbTestVariant experiment='zig-or-zag' variant='zig'>
+            <p>Zig</p>
+          </AbTestVariant>
+          <AbTestVariant experiment='zig-or-zag' variant='zag'>
+            <p>Definitely Zag</p>
+          </AbTestVariant>
 
-        <button onClick={this.onResetVariants}>Reset variants</button>
-      </div>
+          <button onClick={this.onResetVariants}>Reset variants</button>
+        </div>
+      </AbProvider>
     );
   }
 }
