@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AbReactContext } from './Context';
+import AbReactContext from './Context';
 
 function AbProvider({ ab, children }) {
     const contextValue = ab;

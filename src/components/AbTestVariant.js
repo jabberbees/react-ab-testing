@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withAb from './withAb';
+import withAb from '../hoc/withAb';
 
 class AbTestVariant extends React.PureComponent {
     
