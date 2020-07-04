@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withAb from '../hoc/withAb';
+import { withAb } from '../hoc/withAb';
+
+require('react-dom');
+window.React2 = require('react');
+console.log(window.React1 === window.React2);
 
 class AbTestVariant extends React.PureComponent {
     

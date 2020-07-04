@@ -1,7 +1,9 @@
 import React from 'react';
-import { useAb } from '..';
+import { useAb } from '../hooks/useAb';
 
-export default function withAb(WrappedComponent) {
+export function withAb(WrappedComponent) {
+  console.log(WrappedComponent);
+  
   const AbWrapper = props => {
     const ab = useAb();
     return <WrappedComponent ab={ab} {...props} />;
