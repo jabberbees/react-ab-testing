@@ -2,8 +2,6 @@ import React from 'react';
 import { useAb } from '../hooks/useAb';
 
 export function withAb(WrappedComponent) {
-  console.log(WrappedComponent);
-  
   const AbWrapper = props => {
     const ab = useAb();
     return <WrappedComponent ab={ab} {...props} />;

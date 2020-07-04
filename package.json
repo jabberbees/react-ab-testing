@@ -1,6 +1,6 @@
 {
   "name": "@jabberbees/ab-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple React framework for a/b testing",
   "keywords": [
     "a/b",
@@ -23,14 +23,15 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
+    "prepublishOnly": "npm test",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
